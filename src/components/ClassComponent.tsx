@@ -1,7 +1,10 @@
 import { Component } from "react";
-import { Button } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
+
+// definiamo un'INTERFACCIA per le PROPS di questo componente
 
 interface ClassComponentProps {
+  // un'interfaccia che tipizza le PROP ricevute da ClassComponent
   title: string;
   counter?: number;
 }
@@ -24,7 +27,7 @@ class ClassComponent extends Component<
     return (
       <div>
         <h1>Componente a classe!</h1>
-        <h3>Valore della prop: {this.props.title.toLocaleLowerCase()}</h3>
+        <h3>Valore della prop: {this.props.title.toLowerCase()}</h3>
         <Button
           variant="success"
           onClick={() => {
@@ -35,7 +38,7 @@ class ClassComponent extends Component<
         >
           TOGGLE
         </Button>
-        {this.state.show && }
+        {this.state.show && <Alert variant="primary">SHOW È TRUE!</Alert>}
       </div>
     );
   }

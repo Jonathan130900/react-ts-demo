@@ -12,9 +12,15 @@ interface Movie {
   id: number;
 }
 
+const initialMovie: Movie = {
+  title: "",
+  year: 0,
+  id: 0,
+};
+
 const FuncComponent = function (props: FuncComponentProps) {
   const [show, setShow] = useState(false);
-  const [movieObject, setMovieObject] = useState<null | Movie>(null);
+  const [movieObject, setMovieObject] = useState<Movie>(initialMovie);
 
   useEffect(() => {
     console.log("MOUNTING");
@@ -29,8 +35,12 @@ const FuncComponent = function (props: FuncComponentProps) {
   return (
     <div>
       <h2>COMPONENTE A FUNZIONE!</h2>
-      <h3>Il valore della propr è: {props.title.toLowerCase()}</h3>
-      <h3>Il calore di counter è: {props.counter?.toFixed(2)}</h3>
+      <h3>Il valore della prop è: {props.title.toLowerCase()}</h3>
+      <h3>
+        Il calore di counter è:{" "}
+        {/* {props.counter ? props.counter.toFixed(2) : undefined} */}
+        {props.counter?.toFixed(2)}
+      </h3>
       <Button
         variant="success"
         onClick={() => {
@@ -39,9 +49,9 @@ const FuncComponent = function (props: FuncComponentProps) {
       >
         TOGGLE
       </Button>
-      {show && <Alert variant="info">SHOW E TRUE</Alert>}
+      {show && <Alert variant="info">SHOW È TRUE</Alert>}
       <div>
-        <h4>{movieObject?.title}</h4>
+        <h4>{movieObject.title}</h4>
       </div>
     </div>
   );
